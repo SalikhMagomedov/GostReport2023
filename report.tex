@@ -1,0 +1,41 @@
+\documentclass[
+    xelatex,
+    chapter-numbering,
+    % big,
+]{G7-32-2017}
+
+% \input{content/commands.tex}
+
+% %%%%%%%<------------- НАЧАЛО ДОКУМЕНТА
+\begin{document}
+
+% Руководитель НИР
+\HeadOfResearch[№ раздела]{должность}{И.О.~Фамилия}
+
+% Титульная страница
+\TitlePage{content/titlePage}
+
+\frontmatter
+
+\Executors{content/executors.tex}
+\Referat{content/referat.tex}
+\tableofcontents
+\Defines{content/defines.tex}
+\Abbreviations{content/abbreviations.tex}
+\Introduction{content/introduction.tex}
+
+\mainmatter
+
+\input{content/chapter.tex}
+
+\backmatter
+
+\Conclusion{content/conclusion.tex}
+
+\input{content/biblio.tex}
+
+\appendix
+
+\input{content/applicationA.tex}
+
+\end{document}
