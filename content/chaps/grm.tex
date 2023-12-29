@@ -1,0 +1,349 @@
+% \documentclass[a4paper,12pt]{article}
+% \usepackage[T2A]{fontenc}				% Поддержка русских букв
+% \usepackage{cmap}
+% \usepackage[T2A]{fontenc}
+% \usepackage[utf8]{inputenc}
+% \usepackage[russian]{babel}
+% \usepackage{cmap}
+
+% \usepackage{mathtools}
+% \usepackage{amsfonts, amssymb, amsthm}
+% \usepackage{amscd}
+% \usepackage{dsfont}
+% \usepackage{cite}
+% \usepackage[plainpages=false,pdfpagelabels=false,colorlinks=false,pdfborder={0 0 0}]{hyperref}
+
+% \newtheorem{theorem}{Теорема}[section]
+% \newtheorem{proposition}{Предложение}
+% \newtheorem{lemma}{Лемма}[section]
+% \newtheorem{corollary}{Следствие}
+% \newtheorem{notation}{Обозначения}
+% \newtheorem{definition}{Определение}
+% \newtheorem{remark}{Замечание}
+
+% \newenvironment{Rtwocolbib}
+% {%
+% \vspace*{3mm} %
+% \noindent
+% %{\normalfont\bfseries\sffamily Библиографический список}%
+% \def\bibname{}
+% \small
+% %\begin{multicols}{2}%
+% \vspace*{-12mm}%
+% \begin{thebibliography}{99}
+% \setlength{\itemsep}{-4pt}
+% }{%
+% \end{thebibliography}
+% %\end{multicols}%
+% \normalsize}%
+
+% \textwidth=16.5cm
+% \hoffset=-2.5cm
+% \textheight=25.5cm
+% \voffset=-2.5cm
+
+% \righthyphenmin=2
+% \parindent=0mm
+% \parskip=3.5mm
+
+
+% % Заменяем библиографию с квадратных скобок на точку:
+% \makeatletter
+% \renewcommand{\@biblabel}[1]{#1.}
+% \makeatother
+
+% \bibliographystyle{utf8gost705u}
+% %\bibliographystyle{unsrt}
+
+% \begin{document}
+
+% \begin{center}
+% \section*{Отчет НИР за 2023 год}
+% \end{center}
+% \begin{center}
+\chapter{Об аппроксимативных свойствах рядов Фурье по полиномам Лагерра -- Соболева}
+% \end{center}
+% \begin{center}
+% {\bf Аннотация}
+% \end{center}
+
+Рассмотрена задача о приближении функций $f(x)$ из пространства $W^1_{L^2_w}$, $w(x)=e^{-x}$ посредством частичных сумм $S_{1,n+1}(f,x)$ ряда Фурье по системе полиномов, ортогональной по Соболеву и порожденной системой классических полиномов Лагерра.
+Получена оценка скорости сходимости частичных сумм  $S_{1,n+1}(f,x)$ к $f(x)$.
+
+
+\section*{Введение}
+
+Пусть $\alpha>-1$, $r\in \mathbb{N}$, $\rho(x)=e^{-x}x^\alpha$ -- весовая функция, $1\le p<\infty$, $L^p_\rho$ -- пространство измеримых функций $f$, определенных на полуоси $[0, \infty)$ и таких, что
+$$
+\|f\|_{L^p_\rho}=\left(\int\limits_0^{\infty}|f(x)|^p\rho(x) dx\right)^\frac{1}{p}<\infty,
+$$
+$W^r_{L^p_\rho}$ -- пространство функций $f$, непрерывно дифференцируемых $r-1$ раз, для которых $f^{(r-1)}$ абсолютно непрерывна на произвольном сегменте $[a, b]\subset[0, \infty)$, а $f^{(r)}\in L^p_\rho$.
+Далее, через $W^r$ обозначим функции $f$ из $W^r_{L^2_\rho}$, для которых $|f^{(r)}(x)|e^{-\frac x2}\le 1$. В пространстве $W^r_{L^2_\rho}$ определим скалярное произведение типа Соболева
+\begin{equation}\label{Gadzhimirzaev:SobInnerProd}
+\langle f,g\rangle_S=\sum_{\nu=0}^{r-1}f^{(\nu)}(0)g^{(\nu)}(0)+\int_{0}^{\infty} f^{(r)}(x)g^{(r)}(x)\rho(x)dx.
+\end{equation}
+
+В работе~\cite{Gadzhimirzaev:DEMR2016} была введена система полиномов
+\begin{equation*}
+l_{r,r+n}^{\alpha}(x) =\frac{1}{(r-1)!\sqrt{h_n^\alpha}}\int\limits_{0}^x(x-t)^{r-1}L_{n}^{\alpha}(t)dt, \quad n=0,1,\ldots.
+\end{equation*}
+\begin{equation*}
+l_{r,n}^{\alpha}(x) =\frac{x^n}{n!}, \quad n=0,1,\ldots, r-1,
+\end{equation*}
+ортонормированная при $\alpha>-1$ относительно скалярного произведения \eqref{Gadzhimirzaev:SobInnerProd} и порожденная системой полиномов Лагерра $\{L_{n}^{\alpha}(x)\}_{n=0}^\infty$.
+В работе~\cite{Gadzhimirzaev:ShII-MMG} было показано, что система $\{l^\alpha_{r,k}(x)\}_{k=0}^\infty$ полна в $W^r_{L^2_\rho}$. Ряд Фурье функции $f\in W^r_{L^2_\rho}$ по этой системе имеет следующий вид
+\begin{equation}\label{Gadzhimirzaev:Fourier_Series}
+f(x)\sim \sum_{k=0}^{r-1}f^{(k)}(0)\frac{x^k}{k!}+\sum_{k=r}^{\infty} \hat{f}_{r,k}^\alpha l_{r,k}^\alpha(x),
+\end{equation}
+где
+\begin{equation*}
+\hat{f}_{r,k}^\alpha=\frac{1}{\sqrt{h_{k-r}^\alpha}}\int\limits_0^\infty f^{(r)}(t)L_{k-r}^\alpha(t)\rho(t)dt, \quad k\ge r.
+\end{equation*}
+В той же работе была доказана следующая
+
+\textbf{Теорема A.}
+\textit{
+Пусть $-1<\alpha<1$, $f\in W^r_{L^2_\rho}$, $0\le A<\infty$. Тогда для произвольного $x\in [0,\infty)$ имеет место равенство
+\begin{equation*}
+f(x) = \sum_{k=0}^{r-1}f^{(k)}(0)\frac{x^k}{k!}+\sum_{k=r}^{\infty} \hat{f}_{r,k}^\alpha l_{r,k}^\alpha(x),
+\end{equation*}
+в котором ряд Фурье функции $f$ по полиномам $l_{r,k}^{\alpha}(x)$ сходится равномерно относительно $x\in[0,A]$.
+}
+
+Относительно параметра $p$ теорема \textbf{А} была обобщена в работе~\cite{Gadzhimirzaev:RamIzv2020}.
+
+\textbf{Теорема B.}
+\textit{
+Пусть $-1<\alpha<1$. Тогда если $f\in W^r_{L^p_\rho}$, то при $p\ge2$ ряд \eqref{Gadzhimirzaev:Fourier_Series} сходится равномерно к $f$ на любом отрезке $[0,A]$. Если же $1\le p<2$, то существует функция $f\in W^r_{L^p_\rho}$, ряд Фурье которой расходится в точке $x=\pi^2$.
+}
+
+Рассмотрим случай, когда $\alpha=0$. В этом случае для полиномов $l_{r,r+n}^{0}(x)$ имеет место равенство~\cite[следствие 3.1]{Gadzhimirzaev:ShII-MMG}:
+\begin{equation*}
+l_{r,r+n}^{0}(x)=\frac{x^r L_n^r(x)}{(n+r)^{[r]}},
+\end{equation*}
+где $(n+r)^{[r]}=(n+r)(n+r-1)\ldots(n+1)$.
+Тогда ряд Фурье \eqref{Gadzhimirzaev:Fourier_Series} примет следующий вид
+\begin{equation*}
+f(x)\sim \sum_{\nu=0}^{r-1}f^{(\nu)}(0)\frac{x^k}{k!}+x^r\sum_{k=0}^{\infty} \frac{\hat{f}_{r,k+r}^0}{(k+r)^{[r]}}L_k^r(x).
+\end{equation*}
+
+Частичную сумму этого ряда обозначим через $S_{r,n+r}(f,x)$:
+\begin{equation}\label{Gadzhimirzaev:part-sum}
+S_{r,n+r}(f,x)=\sum_{\nu=0}^{r-1}f^{(\nu)}(0)\frac{x^k}{k!}+x^r\sum_{k=0}^{n} \frac{\hat{f}_{r,k+r}^0}{(k+r)^{[r]}}L_k^r(x).
+\end{equation}
+
+Из \eqref{Gadzhimirzaev:part-sum} следует, что для $S_{n+r}(f,x)$ имеют место равенства
+\begin{equation*}
+\left(S_{r,n+r}(f,0)\right)^{(\nu)}=f^{(\nu)}(0), \quad 0\le\nu\le r-1.
+\end{equation*}
+Кроме того, если $f(x)=p_{n+r}(x)$ -- алгебраический полином степени $n+r$, то
+\begin{equation}\label{Gadzhimirzaev:part-sum-second-prop}
+S_{r,n+r}(p_{n+r},x)\equiv p_{n+r}(x).
+\end{equation}
+
+Используя свойство \eqref{Gadzhimirzaev:part-sum-second-prop}, авторы работы \cite{Gadzhimirzaev:ShII-MMG} исследовали аппроксимативные свойства частичных сумм $S_{r,n+r}(f,x)$. В частности, для $f\in W^r_{L^2_\omega}$, $\omega(x)=e^{-x}$ было показано,
+что~\cite[теорема 5.2]{Gadzhimirzaev:ShII-MMG}
+$$
+e^{-x/2}x^{-r/2+1/4}|f(x)-S_{r,n+r}(f,x)|\le (1+\lambda_{r,n}(x))E_{n+r}^r(f),
+$$
+где
+$$
+\lambda_{r,n}(x)\le c(r)
+\begin{cases}
+	\ln(n+1), & x\in[0,\kappa/2]; \\
+	\ln(n+1)+(x/(\kappa^{1/3}+|x-\kappa|))^{1/4}, & x\in[\kappa/2,3\kappa/2]; \\
+	n^{-r/2+5/4}e^{-x/4}, & x\in[3\kappa/2,\infty).
+\end{cases}
+$$
+Здесь $c(r)$ положительная константа, зависящая только от $r$, $\kappa=4n+2r+2$.
+Величина $E_{n+r}^r(f)$ определяется равенством
+$$
+E_{n+r}^r(f)=\inf_{q_{n+r}}\sup_{x>0}|q_{n+r}(x)-f(x)|e^{-x/2}x^{-r/2+1/4},
+$$
+где нижняя грань берется по всем алгебраическим полиномам $q_{n+r}$ степени $n+r$, для которых $f^{(\nu)}(0)=q_{n+r}^{(\nu)}(0)$, $\nu=\overline{0,r-1}$.
+
+Вышеприведенные оценки для разности $|f(x)-S_{r,n+r}(f,x)|$ содержат величину наилучшего приближения $E_{n+r}^r(f)$, поведение которой все еще не исследовано. В настоящей работе для случая $r=1$ получена оценка скорости сходимости частичных сумм $S_{1,n+1}(f,x)$ к функции $f(x)$, не содержащая величины наилучшего приближения $E_{n+r}^r(f)$.
+
+Аналогичные задачи о приближении функций из пространства Соболева алгебраическими полиномами были исследованы в работах различных авторов
+(см. \cite{Approx-Xu}--\cite{Approx-Leonardo} и цитированную в них литературу). В частности, в \cite{Approx-Xu} при $1\le p<\infty$ было рассмотрено пространство $W^r_{L^p_w}=W^r_{L^p_w}[-1,1]=\{f\in C^{r-1}[-1,1]: f^{(r)}\in L^p_w\}$, $w(x)=w_{\alpha,\beta}(x)=(1-x)^\alpha(1+x)^\beta$ с нормой
+$$
+\|f\|_{W^r_{L^p_w}}=\left(\sum_{k=0}^{r}\|f^{(k)}\|^p_{L^p_w}\right)^{1/p}.
+$$
+Для функций из этого пространства были доказаны следующие теоремы.
+
+\textbf{Теорема C.}
+\textit{
+Пусть $\alpha,\beta>-1$. Предположим, что $f\in W^r_{L^p_w}$ при $1\le p<\infty$ или $f\in C^r[-1,1]$ при $p=\infty$. Тогда существует полином $p_n$ такой, что
+$$
+\|f-p_n\|_{W^r_{L^p_w}}\le c E_n(f^{(r)})_{L^p_w},
+$$
+где $E_n(f^{(r)})_{L^p_w}=\inf\limits_{p\in\Pi_n}\|f^{(r)}-p\|_{L^p_w}$ -- величина наилучшего приближения в метрике $L^p_w$.
+}
+
+\textbf{Теорема D.}
+\textit{
+Пусть $\alpha,\beta>-1$. Предположим, что $f\in W^r_{L^p_w}$ при $1\le p<\infty$ или $f\in C^r[-1,1]$ при $p=\infty$. Тогда существует полином $p_n$ такой, что
+$$
+\|f^{(k)}-p_n^{(k)}\|_{L^p_w}\le c n^{-r+k}E_n(f^{(r)})_{L^p_w}
+$$
+при условии, что либо $\alpha=0$, либо $\beta=0$.
+}
+
+Далее, в работе \cite{Approx-Juan} было рассмотрено пространство $H^r_\omega=H^r_\omega(a,b)=\{f\in L^2_\omega(a,b): f^{(m)}\in L^2_\omega(a,b), 1\le m\le r\}$ с нормой
+$$
+\|f\|_{H^r_\omega}=\left(\sum_{m=0}^{r}\|f^{(m)}\|^2_{L^2_w}\right)^{1/2}.
+$$
+Здесь $(a, b)=\mathbb{R}$ при $\omega(x)=e^{-x^2}$, $(a,b)=(0, \infty)$ при $\omega(x)=e^{-x}x^\alpha$, $\alpha>-1$ и $(a,b)=(-1, 1)$ при $\omega(x)=(1-x)^\alpha(1+x)^\beta$, $\alpha, \beta>-1$.
+Был исследован вопрос о приближении функций из этого пространства в метрике $L^2_\omega$ посредством частичных сумм $\mathcal{S}_n^Nf(x)$ ряда Фурье по системе полиномов $\{q_j(x)\}$, ортогональной относительно скалярного произведения Соболева. А именно, была доказана следующая
+
+\textbf{Теорема E.}
+\textit{
+Пусть $r\ge N+1$ и функция $f\in H^r_\omega$ такая, что $f\in L^2_{v_{r-N-1}}$. Тогда оценки
+$$
+\|f^{(m)}-(\mathcal{S}_n^Nf)^{(m)}\|_{L^2_\omega}\le c
+\begin{cases}
+\frac{(-\lambda_{n-N,0})^{(m-N)/2}}{(-\lambda_{n-r,r-N-1})^{(r-N-1)/2}}E_{n-r}(f^{(r)})_{L^2_{v_{r-N-1}}}, N\le m\le r, \\
+\frac{(-\lambda_{n-N,0})^{N/2}}{(-\lambda_{n-r,r-N-1})^{(r-N-1)/2}}E_{n-r}(f^{(r)})_{L^2_{v_{r-N-1}}}, 0\le m\le N-1,
+\end{cases}
+$$
+выполняются всегда в случае весовой функции Эрмита, для $\alpha>-1$ в случае весовой функции Лагерра и при $\alpha, \beta\ge0$ в случае весовой функции Якоби.
+}
+
+\section{Некоторые сведения о полиномах Лагерра}
+
+Пусть $\alpha$ произвольное действительное число. Тогда для полиномов Лагерра $L_n^\alpha(x)$ справедливы следующие соотношения~\cite{Gadzhimirzaev:Szego}:
+\begin{itemize}
+\item
+формула Родрига
+$$
+L_n^\alpha(x)=\frac{1}{n!}x^{-\alpha}e^x\left(x^{n+\alpha}e^{-x}\right)^{(n)};
+$$
+
+\item
+соотношение ортогональности
+$$
+\int_{0}^{\infty}L_n^\alpha(x)L_m^\alpha(x)\rho(x)dx=h_n^\alpha\delta_{n,m},\ \alpha>-1,
+$$
+где $\delta_{n,m}$ -- символ Кронекера, $h_n^\alpha=\frac{\Gamma(n+\alpha+1)}{\Gamma(n+1)}$;
+\item
+формула Кристоффеля -- Дарбу
+\begin{equation*}\label{Gadzhimirzaev:Darbu}	
+K_n^\alpha(x,t)=\sum_{k=0}^{n}\frac{L_k^\alpha(x)L_k^\alpha(t)}{h_k^\alpha}=
+\frac{n+1}{h_n^\alpha}\frac{L_n^\alpha(x)L_{n+1}^\alpha(t)-L_{n+1}^\alpha(x)L_n^\alpha(t)}{x-t};
+\end{equation*}
+
+\item
+рекуррентная формула
+$$
+L_0^\alpha(x)=1, \ L_1^\alpha(x)=-x+\alpha+1,
+$$
+\begin{equation*}\label{Gadzhimirzaev:recur}
+nL_n^\alpha(x)=(-x+2n+\alpha-1)L_{n-1}^\alpha(x)-(n+\alpha-1)L_{n-2}^{\alpha}(x), \ n\ge2;
+\end{equation*}
+
+\item
+равенства
+\begin{equation*}\label{Gadzhimirzaev:prop1}
+nL_n^\alpha(x)=(n+\alpha)L_{n-1}^\alpha(x)-xL_{n-1}^{\alpha+1}(x),
+\end{equation*}
+\begin{equation*}\label{Gadzhimirzaev:prop2}
+L_n^{\alpha-1}(x)=L_{n}^\alpha(x)-L_{n-1}^{\alpha}(x);
+\end{equation*}
+
+\item
+весовая оценка~\cite{Gadzhimirzaev:AskeyWain,Gadzhimirzaev:Mocken}
+\begin{equation*}\label{Gadzhimirzaev:weight-est}
+e^{-\frac{x}{2}}|L_n^\alpha(x)|\le c(\alpha)A_n^\alpha(x),\ \alpha>-1.
+\end{equation*}
+\end{itemize}
+Здесь и далее $c$, $c(\alpha)$ -- положительные числа, зависящие от указанных параметров,
+$$
+A_n^\alpha(x)=
+\begin{cases}
+	\theta^\alpha, & 0\le x\le \frac{1}{\theta}; \\
+	\theta^{\frac{\alpha}{2}-\frac14}x^{-\frac{\alpha}{2}-\frac14}, & \frac{1}{\theta}< x\le \frac{\theta}{2}; \\
+	\left[\theta\left(\theta^{\frac13}+|x-\theta|\right)\right]^{-\frac14}, & \frac{\theta}{2}< x\le \frac{3\theta}{2}; \\
+	e^{-\frac x4}, & \frac{3\theta}{2}<x,
+\end{cases}
+$$
+где $\theta=\theta_n(\alpha)=4n+2\alpha+2$.
+
+Для ортонормированных полиномов Лагерра $l_n^\alpha(x)=\frac{1}{\sqrt{h_n^\alpha}}L_n^\alpha(x)$ имеют место оценки
+\begin{equation*}\label{Gadzhimirzaev:orth-est}
+e^{-\frac{x}{2}}|l_{n+1}^\alpha(x)-l_{n-1}^\alpha(x)|\le c(\alpha)
+\begin{cases}
+		\theta^{\frac{\alpha}{2}-1}, & 0\le x\le \frac{1}{\theta}; \\
+		\theta^{-\frac34}x^{-\frac{\alpha}{2}+\frac14}, & \frac{1}{\theta}< x\le \frac{\theta}{2}; \\
+		x^{-\frac{\alpha}{2}}\theta^{-\frac34}\left(\theta^{\frac13}+|x-\theta|\right)^{\frac14}, & \frac{\theta}{2}< x\le \frac{3\theta}{2}; \\
+		e^{-\frac x4}, & \frac{3\theta}{2}<x.
+\end{cases}
+\end{equation*}
+
+\section{Вспомогательные утверждения}
+
+Пусть $\mathcal{K}_{n}(x,t)=\sum\limits_{k=0}^{n}L_k^1(x)L_k(t)$. Справедливы следующие утверждения.
+
+\begin{lemma}
+Имеет место равенство
+\begin{equation*}\label{Gadzhimirzaev:ker}
+(x-t)\mathcal{K}_{n}(x,t)=(n+1)\left(L^1_{n}(x)L_{n+1}(t)-L^1_{n+1}(x)L_{n}(t)\right)+\sum_{k=0}^{n}L_{k}(x)L_{k}(t).
+\end{equation*}
+\end{lemma}
+
+\begin{lemma}
+Для величины $\mathcal{K}_{n}(x,t)$ справедливо равенство
+\begin{equation*}
+(x-t)\mathcal{K}_{n}(x,t)=xL^2_{n}(x)L_{n}(t)-tL^1_{n}(x)L^1_{n}(t)-L^1_{n}(x)L_{n}(t)+\sum_{k=0}^{n}L_{k}(x)L_{k}(t).
+\end{equation*}
+\end{lemma}
+
+\begin{lemma}
+Для $K_{n}^0(x,t)=\sum\limits_{k=0}^{n}L_{k}(x)L_{k}(t)$ имеет место представление
+$$
+K_n^0(x,t)=\frac{n+1}{2n+1}L_{n}(x)L_{n}(t)+
+$$
+\begin{equation*}	
+\frac{n(n+1)}{2n+1}\frac{1}{t-x}\left[L_{n}(t)\left(L_{n+1}(x)-L_{n-1}(x)\right)-L_{n}(x)\left(L_{n+1}(t)-L_{n-1}(t)\right)\right].
+\end{equation*}
+\end{lemma}
+
+\begin{lemma}
+Имеет место равенство
+\begin{equation*}
+\sum_{k=0}^{\infty}\left(\frac{x^{\frac34}L_k^1(x)}{k+1}\right)^2 = \frac{e^{x}-1}{\sqrt{x}}, \ x\in[0,\infty).
+\end{equation*}
+\end{lemma}
+
+\begin{lemma}
+\cite{Gadzhimirzaev:mathnot2021}	
+Пусть $\alpha>-1$, $n\in\mathbb{N}$, $x\in[0,\infty)$. Тогда имеют место следующие оценки
+\begin{equation*}
+e^{-x}K_{n}^\alpha(x,x)\le c(\alpha)
+\begin{cases}
+n^{-\alpha}, & x\in[\theta_n/2, 3\theta_n/2], \\
+n^{1-\alpha}(A_n^\alpha(x))^2, & x\in[0,\theta_n/2]\cup[3\theta_n/2,\infty).
+\end{cases}
+\end{equation*}
+\end{lemma}
+
+\section{Формулировка основного результата}
+Основным результатом является следующая
+\begin{theorem}\label{Gadzhimirzaev:theorem1}
+Пусть $f\in W^1$, $x\in[0,\infty)$. Тогда имеет место оценка
+$$
+\frac{x^{-\frac14}e^{-\frac x2}}{\sqrt{x+1}}|f(x)-S_{1,n+1}(f,x)|\le c
+\frac{\ln(n+1)}{n^{\frac14}},
+$$
+где $c$ -- положительная константа.
+\end{theorem}
+
+\section{Заключение}
+
+Была исследована задача об оценке отклонения частичных сумм $S_{1,n+1}(f,x)$ ряда Фурье по полиномам Лагерра -- Соболева от функции $f$ из весового пространства Соболева, для которой $|f'(x)|e^{-\frac x2}\le 1$.
+В частности, получена оценка вида $\frac{x^{-\frac14}e^{-\frac x2}}{\sqrt{x+1}}|f(x)-S_{1,n+1}(f,x)|\le c
+\frac{\ln(n+1)}{n^{\frac14}}.$
+
+\section{Компьютерные программы} 
+В отчетном году зарегистрированы программы \cite{Sal-Ram1,Sal-Ram2}, предназначенные для вычисления полиномов Лагерра -- Соболева и функций Лагерра -- Соболева на сетке при заданных значениях параметров $\alpha, r, n$. Эти программы разработаны на основе четырехчленных рекуррентных формул и могут быть использованы при построении графиков и исследовании различных свойств полиномов Лагерра–Соболева и функций Лагерра -- Соболева, а также при вычислении на сетке значений частичной суммы ряда Фурье по указанным полиномам и функциям.
+
+% \end{document}
