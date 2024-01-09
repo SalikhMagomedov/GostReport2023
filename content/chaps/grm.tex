@@ -1,75 +1,5 @@
-% \documentclass[a4paper,12pt]{article}
-% \usepackage[T2A]{fontenc}				% Поддержка русских букв
-% \usepackage{cmap}
-% \usepackage[T2A]{fontenc}
-% \usepackage[utf8]{inputenc}
-% \usepackage[russian]{babel}
-% \usepackage{cmap}
 
-% \usepackage{mathtools}
-% \usepackage{amsfonts, amssymb, amsthm}
-% \usepackage{amscd}
-% \usepackage{dsfont}
-% \usepackage{cite}
-% \usepackage[plainpages=false,pdfpagelabels=false,colorlinks=false,pdfborder={0 0 0}]{hyperref}
-
-% \newtheorem{theorem}{Теорема}[section]
-% \newtheorem{proposition}{Предложение}
-% \newtheorem{lemma}{Лемма}[section]
-% \newtheorem{corollary}{Следствие}
-% \newtheorem{notation}{Обозначения}
-% \newtheorem{definition}{Определение}
-% \newtheorem{remark}{Замечание}
-
-% \newenvironment{Rtwocolbib}
-% {%
-% \vspace*{3mm} %
-% \noindent
-% %{\normalfont\bfseries\sffamily Библиографический список}%
-% \def\bibname{}
-% \small
-% %\begin{multicols}{2}%
-% \vspace*{-12mm}%
-% \begin{thebibliography}{99}
-% \setlength{\itemsep}{-4pt}
-% }{%
-% \end{thebibliography}
-% %\end{multicols}%
-% \normalsize}%
-
-% \textwidth=16.5cm
-% \hoffset=-2.5cm
-% \textheight=25.5cm
-% \voffset=-2.5cm
-
-% \righthyphenmin=2
-% \parindent=0mm
-% \parskip=3.5mm
-
-
-% % Заменяем библиографию с квадратных скобок на точку:
-% \makeatletter
-% \renewcommand{\@biblabel}[1]{#1.}
-% \makeatother
-
-% \bibliographystyle{utf8gost705u}
-% %\bibliographystyle{unsrt}
-
-% \begin{document}
-
-% \begin{center}
-% \section*{Отчет НИР за 2023 год}
-% \end{center}
-% \begin{center}
 \chapter{Об аппроксимативных свойствах рядов Фурье по полиномам Лагерра -- Соболева}
-% \end{center}
-% \begin{center}
-% {\bf Аннотация}
-% \end{center}
-
-Рассмотрена задача о приближении функций $f(x)$ из пространства $W^1_{L^2_w}$, $w(x)=e^{-x}$ посредством частичных сумм $S_{1,n+1}(f,x)$ ряда Фурье по системе полиномов, ортогональной по Соболеву и порожденной системой классических полиномов Лагерра.
-Получена оценка скорости сходимости частичных сумм  $S_{1,n+1}(f,x)$ к $f(x)$.
-
 
 \section*{Введение}
 
@@ -126,15 +56,13 @@ l_{r,r+n}^{0}(x)=\frac{x^r L_n^r(x)}{(n+r)^{[r]}},
 \begin{equation*}
 f(x)\sim \sum_{\nu=0}^{r-1}f^{(\nu)}(0)\frac{x^k}{k!}+x^r\sum_{k=0}^{\infty} \frac{\hat{f}_{r,k+r}^0}{(k+r)^{[r]}}L_k^r(x).
 \end{equation*}
-
 Частичную сумму этого ряда обозначим через $S_{r,n+r}(f,x)$:
 \begin{equation}\label{Gadzhimirzaev:part-sum}
 S_{r,n+r}(f,x)=\sum_{\nu=0}^{r-1}f^{(\nu)}(0)\frac{x^k}{k!}+x^r\sum_{k=0}^{n} \frac{\hat{f}_{r,k+r}^0}{(k+r)^{[r]}}L_k^r(x).
 \end{equation}
-
 Из \eqref{Gadzhimirzaev:part-sum} следует, что для $S_{n+r}(f,x)$ имеют место равенства
 \begin{equation*}
-\left(S_{r,n+r}(f,0)\right)^{(\nu)}=f^{(\nu)}(0), \quad 0\le\nu\le r-1.
+S_{r,n+r}^{(\nu)}(f,0)=f^{(\nu)}(0), \quad 0\le\nu\le r-1.
 \end{equation*}
 Кроме того, если $f(x)=p_{n+r}(x)$ -- алгебраический полином степени $n+r$, то
 \begin{equation}\label{Gadzhimirzaev:part-sum-second-prop}
@@ -142,11 +70,11 @@ S_{r,n+r}(p_{n+r},x)\equiv p_{n+r}(x).
 \end{equation}
 
 Используя свойство \eqref{Gadzhimirzaev:part-sum-second-prop}, авторы работы \cite{Gadzhimirzaev:ShII-MMG} исследовали аппроксимативные свойства частичных сумм $S_{r,n+r}(f,x)$. В частности, для $f\in W^r_{L^2_\omega}$, $\omega(x)=e^{-x}$ было показано,
-что~\cite[теорема 5.2]{Gadzhimirzaev:ShII-MMG}
+что имеет место неравенство типа Лебега~\cite[теорема 5.2]{Gadzhimirzaev:ShII-MMG}
 $$
 e^{-x/2}x^{-r/2+1/4}|f(x)-S_{r,n+r}(f,x)|\le (1+\lambda_{r,n}(x))E_{n+r}^r(f),
 $$
-где
+в котором для функции $\lambda_{r,n}(x)$ справедливы оценки
 $$
 \lambda_{r,n}(x)\le c(r)
 \begin{cases}
@@ -162,7 +90,7 @@ E_{n+r}^r(f)=\inf_{q_{n+r}}\sup_{x>0}|q_{n+r}(x)-f(x)|e^{-x/2}x^{-r/2+1/4},
 $$
 где нижняя грань берется по всем алгебраическим полиномам $q_{n+r}$ степени $n+r$, для которых $f^{(\nu)}(0)=q_{n+r}^{(\nu)}(0)$, $\nu=\overline{0,r-1}$.
 
-Вышеприведенные оценки для разности $|f(x)-S_{r,n+r}(f,x)|$ содержат величину наилучшего приближения $E_{n+r}^r(f)$, поведение которой все еще не исследовано. В настоящей работе для случая $r=1$ получена оценка скорости сходимости частичных сумм $S_{1,n+1}(f,x)$ к функции $f(x)$, не содержащая величины наилучшего приближения $E_{n+r}^r(f)$.
+Вышеприведенные оценки для разности $|f(x)-S_{r,n+r}(f,x)|$ содержат величину наилучшего приближения $E_{n+r}^r(f)$, поведение которой все еще не исследовано. В этом разделе для случая $r=1$ получена оценка скорости сходимости частичных сумм $S_{1,n+1}(f,x)$ к функции $f(x)$, не содержащая величины наилучшего приближения $E_{n+r}^r(f)$.
 
 Аналогичные задачи о приближении функций из пространства Соболева алгебраическими полиномами были исследованы в работах различных авторов
 (см. \cite{Approx-Xu}--\cite{Approx-Leonardo} и цитированную в них литературу). В частности, в \cite{Approx-Xu} при $1\le p<\infty$ было рассмотрено пространство $W^r_{L^p_w}=W^r_{L^p_w}[-1,1]=\{f\in C^{r-1}[-1,1]: f^{(r)}\in L^p_w\}$, $w(x)=w_{\alpha,\beta}(x)=(1-x)^\alpha(1+x)^\beta$ с нормой
@@ -279,7 +207,7 @@ e^{-\frac{x}{2}}|l_{n+1}^\alpha(x)-l_{n-1}^\alpha(x)|\le c(\alpha)
 \end{cases}
 \end{equation*}
 
-\section{Вспомогательные утверждения}
+\section{Вспомогательные утверждения и основной результат}
 
 Пусть $\mathcal{K}_{n}(x,t)=\sum\limits_{k=0}^{n}L_k^1(x)L_k(t)$. Справедливы следующие утверждения.
 
@@ -326,8 +254,7 @@ n^{1-\alpha}(A_n^\alpha(x))^2, & x\in[0,\theta_n/2]\cup[3\theta_n/2,\infty).
 \end{equation*}
 \end{lemma}
 
-\section{Формулировка основного результата}
-Основным результатом является следующая
+Основным результатом этого раздела является следующая
 \begin{theorem}\label{Gadzhimirzaev:theorem1}
 Пусть $f\in W^1$, $x\in[0,\infty)$. Тогда имеет место оценка
 $$
@@ -337,13 +264,3 @@ $$
 где $c$ -- положительная константа.
 \end{theorem}
 
-\section{Заключение}
-
-Была исследована задача об оценке отклонения частичных сумм $S_{1,n+1}(f,x)$ ряда Фурье по полиномам Лагерра -- Соболева от функции $f$ из весового пространства Соболева, для которой $|f'(x)|e^{-\frac x2}\le 1$.
-В частности, получена оценка вида $\frac{x^{-\frac14}e^{-\frac x2}}{\sqrt{x+1}}|f(x)-S_{1,n+1}(f,x)|\le c
-\frac{\ln(n+1)}{n^{\frac14}}.$
-
-\section{Компьютерные программы} 
-В отчетном году зарегистрированы программы \cite{Sal-Ram1,Sal-Ram2}, предназначенные для вычисления полиномов Лагерра -- Соболева и функций Лагерра -- Соболева на сетке при заданных значениях параметров $\alpha, r, n$. Эти программы разработаны на основе четырехчленных рекуррентных формул и могут быть использованы при построении графиков и исследовании различных свойств полиномов Лагерра–Соболева и функций Лагерра -- Соболева, а также при вычислении на сетке значений частичной суммы ряда Фурье по указанным полиномам и функциям.
-
-% \end{document}
