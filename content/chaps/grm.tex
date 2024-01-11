@@ -10,7 +10,7 @@ $$
 $W^r_{L^p_\rho}$ -- пространство функций $f$, непрерывно дифференцируемых $r-1$ раз, для которых $f^{(r-1)}$ абсолютно непрерывна на произвольном сегменте $[a, b]\subset[0, \infty)$, а $f^{(r)}\in L^p_\rho$.
 Далее, через $W^r$ обозначим функции $f$ из $W^r_{L^2_\rho}$, для которых $|f^{(r)}(x)|e^{-\frac x2}\le 1$. В пространстве $W^r_{L^2_\rho}$ определим скалярное произведение типа Соболева
 \begin{equation}\label{Gadzhimirzaev:SobInnerProd}
-\langle f,g\rangle_S=\sum_{\nu=0}^{r-1}f^{(\nu)}(0)g^{(\nu)}(0)+\int_{0}^{\infty} f^{(r)}(x)g^{(r)}(x)\rho(x)dx.
+\langle f,g \rangle _S =\sum_{\nu=0}^{r-1}f^{(\nu)}(0)g^{(\nu)}(0)+\int_{0}^{\infty} f^{(r)}(x)g^{(r)}(x)\rho(x)dx.
 \end{equation}
 
 В работе~\cite{Gadzhimirzaev:DEMR2016} была введена система полиномов
@@ -31,21 +31,19 @@ f(x)\sim \sum_{k=0}^{r-1}f^{(k)}(0)\frac{x^k}{k!}+\sum_{k=r}^{\infty} \hat{f}_{r
 \end{equation*}
 В той же работе была доказана следующая
 
-\textbf{Теорема A.}
-\textit{
-Пусть $-1<\alpha<1$, $f\in W^r_{L^2_\rho}$, $0\le A<\infty$. Тогда для произвольного $x\in [0,\infty)$ имеет место равенство
-\begin{equation*}
-f(x) = \sum_{k=0}^{r-1}f^{(k)}(0)\frac{x^k}{k!}+\sum_{k=r}^{\infty} \hat{f}_{r,k}^\alpha l_{r,k}^\alpha(x),
-\end{equation*}
-в котором ряд Фурье функции $f$ по полиномам $l_{r,k}^{\alpha}(x)$ сходится равномерно относительно $x\in[0,A]$.
-}
+\begin{theoremA}\label{th:grm-a}
+	Пусть $-1<\alpha<1$, $f\in W^r_{L^2_\rho}$, $0\le A<\infty$. Тогда для произвольного $x\in [0,\infty)$ имеет место равенство
+	\begin{equation*}
+	f(x) = \sum_{k=0}^{r-1}f^{(k)}(0)\frac{x^k}{k!}+\sum_{k=r}^{\infty} \hat{f}_{r,k}^\alpha l_{r,k}^\alpha(x),
+	\end{equation*}
+	в котором ряд Фурье функции $f$ по полиномам $l_{r,k}^{\alpha}(x)$ сходится равномерно относительно $x\in[0,A]$.
+\end{theoremA}
 
-Относительно параметра $p$ теорема \textbf{А} была обобщена в работе~\cite{Gadzhimirzaev:RamIzv2020}.
+Относительно параметра $p$ теорема~\ref{th:grm-a} была обобщена в работе~\cite{Gadzhimirzaev:RamIzv2020}.
 
-\textbf{Теорема B.}
-\textit{
-Пусть $-1<\alpha<1$. Тогда если $f\in W^r_{L^p_\rho}$, то при $p\ge2$ ряд \eqref{Gadzhimirzaev:Fourier_Series} сходится равномерно к $f$ на любом отрезке $[0,A]$. Если же $1\le p<2$, то существует функция $f\in W^r_{L^p_\rho}$, ряд Фурье которой расходится в точке $x=\pi^2$.
-}
+\begin{theoremA}
+	Пусть $-1<\alpha<1$. Тогда если $f\in W^r_{L^p_\rho}$, то при $p\ge2$ ряд \eqref{Gadzhimirzaev:Fourier_Series} сходится равномерно к $f$ на любом отрезке $[0,A]$. Если же $1\le p<2$, то существует функция $f\in W^r_{L^p_\rho}$, ряд Фурье которой расходится в точке $x=\pi^2$.
+\end{theoremA}
 
 Рассмотрим случай, когда $\alpha=0$. В этом случае для полиномов $l_{r,r+n}^{0}(x)$ имеет место равенство~\cite[следствие 3.1]{Gadzhimirzaev:ShII-MMG}:
 \begin{equation*}
@@ -99,23 +97,21 @@ $$
 $$
 Для функций из этого пространства были доказаны следующие теоремы.
 
-\textbf{Теорема C.}
-\textit{
-Пусть $\alpha,\beta>-1$. Предположим, что $f\in W^r_{L^p_w}$ при $1\le p<\infty$ или $f\in C^r[-1,1]$ при $p=\infty$. Тогда существует полином $p_n$ такой, что
-$$
-\|f-p_n\|_{W^r_{L^p_w}}\le c E_n(f^{(r)})_{L^p_w},
-$$
-где $E_n(f^{(r)})_{L^p_w}=\inf\limits_{p\in\Pi_n}\|f^{(r)}-p\|_{L^p_w}$ -- величина наилучшего приближения в метрике $L^p_w$.
-}
+\begin{theoremA}
+	Пусть $\alpha,\beta>-1$. Предположим, что $f\in W^r_{L^p_w}$ при $1\le p<\infty$ или $f\in C^r[-1,1]$ при $p=\infty$. Тогда существует полином $p_n$ такой, что
+	$$
+	\|f-p_n\|_{W^r_{L^p_w}}\le c E_n(f^{(r)})_{L^p_w},
+	$$
+	где $E_n(f^{(r)})_{L^p_w}=\inf\limits_{p\in\Pi_n}\|f^{(r)}-p\|_{L^p_w}$ -- величина наилучшего приближения в метрике $L^p_w$.
+\end{theoremA}
 
-\textbf{Теорема D.}
-\textit{
-Пусть $\alpha,\beta>-1$. Предположим, что $f\in W^r_{L^p_w}$ при $1\le p<\infty$ или $f\in C^r[-1,1]$ при $p=\infty$. Тогда существует полином $p_n$ такой, что
-$$
-\|f^{(k)}-p_n^{(k)}\|_{L^p_w}\le c n^{-r+k}E_n(f^{(r)})_{L^p_w}
-$$
-при условии, что либо $\alpha=0$, либо $\beta=0$.
-}
+\begin{theoremA}
+	Пусть $\alpha,\beta>-1$. Предположим, что $f\in W^r_{L^p_w}$ при $1\le p<\infty$ или $f\in C^r[-1,1]$ при $p=\infty$. Тогда существует полином $p_n$ такой, что
+	$$
+	\|f^{(k)}-p_n^{(k)}\|_{L^p_w}\le c n^{-r+k}E_n(f^{(r)})_{L^p_w}
+	$$
+	при условии, что либо $\alpha=0$, либо $\beta=0$.
+\end{theoremA}
 
 Далее, в работе \cite{Approx-Juan} было рассмотрено пространство $H^r_\omega=H^r_\omega(a,b)=\{f\in L^2_\omega(a,b): f^{(m)}\in L^2_\omega(a,b), 1\le m\le r\}$ с нормой
 $$
@@ -124,18 +120,17 @@ $$
 Здесь $(a, b)=\mathbb{R}$ при $\omega(x)=e^{-x^2}$, $(a,b)=(0, \infty)$ при $\omega(x)=e^{-x}x^\alpha$, $\alpha>-1$ и $(a,b)=(-1, 1)$ при $\omega(x)=(1-x)^\alpha(1+x)^\beta$, $\alpha, \beta>-1$.
 Был исследован вопрос о приближении функций из этого пространства в метрике $L^2_\omega$ посредством частичных сумм $\mathcal{S}_n^Nf(x)$ ряда Фурье по системе полиномов $\{q_j(x)\}$, ортогональной относительно скалярного произведения Соболева. А именно, была доказана следующая
 
-\textbf{Теорема E.}
-\textit{
-Пусть $r\ge N+1$ и функция $f\in H^r_\omega$ такая, что $f\in L^2_{v_{r-N-1}}$. Тогда оценки
-$$
-\|f^{(m)}-(\mathcal{S}_n^Nf)^{(m)}\|_{L^2_\omega}\le c
-\begin{cases}
-\frac{(-\lambda_{n-N,0})^{(m-N)/2}}{(-\lambda_{n-r,r-N-1})^{(r-N-1)/2}}E_{n-r}(f^{(r)})_{L^2_{v_{r-N-1}}}, N\le m\le r, \\
-\frac{(-\lambda_{n-N,0})^{N/2}}{(-\lambda_{n-r,r-N-1})^{(r-N-1)/2}}E_{n-r}(f^{(r)})_{L^2_{v_{r-N-1}}}, 0\le m\le N-1,
-\end{cases}
-$$
-выполняются всегда в случае весовой функции Эрмита, для $\alpha>-1$ в случае весовой функции Лагерра и при $\alpha, \beta\ge0$ в случае весовой функции Якоби.
-}
+\begin{theoremA}
+	Пусть $r\ge N+1$ и функция $f\in H^r_\omega$ такая, что $f\in L^2_{v_{r-N-1}}$. Тогда оценки
+	$$
+	\|f^{(m)}-(\mathcal{S}_n^Nf)^{(m)}\|_{L^2_\omega}\le c
+	\begin{cases}
+	\frac{(-\lambda_{n-N,0})^{(m-N)/2}}{(-\lambda_{n-r,r-N-1})^{(r-N-1)/2}}E_{n-r}(f^{(r)})_{L^2_{v_{r-N-1}}}, N\le m\le r, \\
+	\frac{(-\lambda_{n-N,0})^{N/2}}{(-\lambda_{n-r,r-N-1})^{(r-N-1)/2}}E_{n-r}(f^{(r)})_{L^2_{v_{r-N-1}}}, 0\le m\le N-1,
+	\end{cases}
+	$$
+	выполняются всегда в случае весовой функции Эрмита, для $\alpha>-1$ в случае весовой функции Лагерра и при $\alpha, \beta\ge0$ в случае весовой функции Якоби.
+\end{theoremA}
 
 \section{Некоторые сведения о полиномах Лагерра}
 
