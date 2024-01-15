@@ -146,19 +146,22 @@
             }
         \end{tabular}
         \begin{tabular}{
-            p{0.4\textwidth}
+            p{0.35\textwidth}
             p{0.2\textwidth}
-            p{0.4\textwidth}
+            p{0.35\textwidth}
+            p{0.1\textwidth}
         }
             \ifbool{isAgreed}{
-                \rule[-2mm]{0.4\textwidth}{0.2mm}
+                \rule[-2mm]{0.35\textwidth}{0.2mm}
                 \newline
                 \centering{\footnotesize{дата}}
-            }{}
-            & &
-            \rule[-2mm]{0.4\textwidth}{0.2mm}
-            \newline
-            \centering{\footnotesize{дата}}
+            }{\empty}
+            & \empty
+            % & \rule[-2mm]{0.35\textwidth}{0.2mm}
+            % \newline
+            % \centering{\footnotesize{дата}}
+            & <<\rule[-2mm]{2em}{0.2mm}>>~\rule[-2mm]{7em}{0.2mm}~\Year@Value~г.
+            & \empty
         \end{tabular}
         
         \vspace{2em}
@@ -173,32 +176,29 @@
         
         \vspace{2em}
         
-        \notblank{\FederalProgramName@Value}{
+        \ifdefempty{\FederalProgramName@Value}{}{
             \FederalProgramName@Value
-        }{}
+        }
         
-        \notblank{\BookNumber@Value}{
+        \ifdefempty{\BookNumber@Value}{}{
             Книга~\BookNumber@Value
-        }{}
+        }
 
         \vfill
         
         \begin{tabular}{
-            b{0.2\textwidth} 
-            b{0.25\textwidth} 
-            b{0.1\textwidth} 
+            b{0.3\textwidth} 
             b{0.2\textwidth}
-            b{0.25\textwidth}
+            b{0.3\textwidth}
+            b{0.2\textwidth}
         }
-            \empty
-            &
             Руководитель НИР,
             \newline
             \HeadOfResearch@Position@Value
             \newline
             \empty
             & &
-            \rule[-1mm]{0.2\textwidth}{0.2mm}
+            \rule[-1mm]{0.3\textwidth}{0.2mm}
             \newline
             \centering\footnotesize{подпись, дата} & ~\HeadOfResearch@FullName@Value
             \newline
@@ -364,7 +364,7 @@
 % Вид отчета
 \newcommand{\ReportType@Value}{}
 \newcommand{\ReportType}[2][]{
-    \renewcommand{\ReportType@Value}{#2\notblank{#1}{, № #1}{}}
+    \renewcommand{\ReportType@Value}{#2\notblank{#1}{, этап #1}{}}
 }
 % Наименование федеральной программы
 \newcommand{\FederalProgramName@Value}{}
@@ -391,8 +391,10 @@
 }
 % Место Год
 \newcommand{\PlaceAndYear@Value}{}
+\newcommand{\Year@Value}{}
 \newcommand{\PlaceAndYear}[2]{
     \renewcommand{\PlaceAndYear@Value}{#1~#2}
+    \renewcommand{\Year@Value}{#2}
 }
 
 
