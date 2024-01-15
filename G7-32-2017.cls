@@ -224,6 +224,16 @@
     \footnotesize{\notblank{#1}{(#1)}{}} 
     \\ & & \\
 }
+\newcommand{\lastRow}[3][]{%
+    \small{#2}
+    \newline &
+    \centering{\rule[-2mm]{0.29\textwidth}{0.2mm}}
+    \centering{\footnotesize{подпись, дата}} &
+    #3
+    \newline
+    \footnotesize{\notblank{#1}{(#1)}{}} 
+    \\ & & 
+}
 \newcommand{\Executors}[1]{
     \begin{singlespacing}
         \chapter*{СПИСОК ИСПОЛНИТЕЛЕЙ}
