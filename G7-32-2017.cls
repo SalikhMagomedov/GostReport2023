@@ -221,35 +221,31 @@
     \centering{\footnotesize{подпись, дата}} &
     #3
     \newline
-    \footnotesize{\notblank{#1}{(#1)}{}} 
-    \\ & & \\
+    \footnotesize{\notblank{#1}{(#1)}{}} \\
 }
-\newcommand{\lastRow}[3][]{%
-    \small{#2}
+\newcommand{\lastRow}[2]{%
+    \small{#1}
     \newline &
     \centering{\rule[-2mm]{0.29\textwidth}{0.2mm}}
     \centering{\footnotesize{подпись, дата}} &
-    #3
-    \newline
-    \footnotesize{\notblank{#1}{(#1)}{}} 
-    \\ & & 
+    #2
 }
-\newcommand{\Executors}[1]{
+\newcommand{\Executors}[2][]{
     \begin{singlespacing}
         \chapter*{СПИСОК ИСПОЛНИТЕЛЕЙ}
         \setlength{\tabcolsep}{0pt}
+        \renewcommand{\arraystretch}{\notblank{#1}{#1}{2}}
         \begin{longtable}{
         b{0.35\textwidth} 
         b{0.3\textwidth} 
         b{0.35\textwidth}
         }
-            Руководитель НИР, & & \\
+            Руководитель НИР, \newline
             \row[\HeadOfResearch@Chapters@Value]{\HeadOfResearch@Position@Value}{\HeadOfResearch@FullName@Value}
 
-            \input{#1}
+            \input{#2}
 
         \end{longtable}
-        \setlength{\tabcolsep}{6pt}
     \end{singlespacing}
 }
 
